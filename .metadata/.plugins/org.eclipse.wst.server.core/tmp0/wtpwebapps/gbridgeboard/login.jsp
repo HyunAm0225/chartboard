@@ -11,8 +11,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <title>login 페이지</title>
+<style>
+	body{
+		background-image: url("images/background-chart.jpg");
+	}
+	#loginbox{
+        background-color: rgba( 255, 255, 255, 0.2 );
+	}
+</style>
 </head>
 <body>
+<!-- navbar 시작 -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">차트분석기</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +55,29 @@
     </ul>
   </div>
 </nav>
-	
-	<h2>Hello World!</h2>
+<!-- navbar 끝 -->	
+	<div class="container p-5 my-5 text-white rounded-lg shadow-lg" id="loginbox">
+	<h1 class="text-center">Login</h1>
+	<br>
+	<form action="post" action="loginAction.jsp">
+	<div class="row">
+		<div class="col-sm-3"><h1 class="text-right">ID:</h1></div>
+		<div class="col-sm-6"><input type="text" class="form-control form-control-lg rounded-pill" placeholder="ID를 입력하시오."></div>
+		<div class="col-sm-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3"><h1 class="text-right">PW:</h1></div>
+		<div class="col-sm-6"><input type="password" class="form-control form-control-lg rounded-pill" placeholder="PW를 입력하시오."></div>
+		<div class="col-sm-3"></div>
+	</div>
+	<br>
+	<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6"><input type="submit" class="btn btn-primary form-control rounded-pill" value="로그인"></div>
+	<div class="col-sm-3"></div>
+	</div>
+		
+	</form>
+	</div>
 </body>
 </html>
