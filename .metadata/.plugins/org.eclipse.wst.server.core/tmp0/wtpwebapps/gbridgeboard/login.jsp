@@ -59,15 +59,15 @@
 	<div class="container p-5 my-5 text-white rounded-lg shadow-lg" id="loginbox">
 	<h1 class="text-center">Login</h1>
 	<br>
-	<form action="post" action="loginAction.jsp">
+	<form method="post" action="loginAction.jsp">
 	<div class="row">
 		<div class="col-sm-3"><h1 class="text-right">ID:</h1></div>
-		<div class="col-sm-6"><input type="text" class="form-control form-control-lg rounded-pill" placeholder="ID를 입력하시오."></div>
+		<div class="col-sm-6"><input type="text" class="form-control form-control-lg rounded-pill" placeholder="ID를 입력하시오." name="userID"></div>
 		<div class="col-sm-3"></div>
 	</div>
 	<div class="row">
 		<div class="col-sm-3"><h1 class="text-right">PW:</h1></div>
-		<div class="col-sm-6"><input type="password" class="form-control form-control-lg rounded-pill" placeholder="PW를 입력하시오."></div>
+		<div class="col-sm-6"><input type="password" class="form-control form-control-lg rounded-pill" placeholder="PW를 입력하시오." name = "userPassword"></div>
 		<div class="col-sm-3"></div>
 	</div>
 	<br>

@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
+F:\chartboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3804036336.index
+\gbridgeboard\src
 F:\chartboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\229255483.index
 \gbridgeboard\src
