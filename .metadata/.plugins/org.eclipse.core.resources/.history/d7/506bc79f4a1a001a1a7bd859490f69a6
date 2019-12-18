@@ -1,0 +1,8 @@
+package chart;
+
+public class Info {
+	public int rank;
+	public String singer;
+	public String song;
+	public String elbum;
+}

@@ -12,7 +12,8 @@
 <title>index 페이지</title>
 </head>
 <body>
-	
-	<h2>Hello World!</h2>
+	<script>
+		location.href='login.jsp';
+	</script>
 </body>
 </html>

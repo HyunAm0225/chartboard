@@ -23,7 +23,7 @@
 <body>
 <!-- navbar 시작 -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">차트분석기</a>
+  <a class="navbar-brand" href="main.jsp">차트분석기</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,20 +38,20 @@
          	<span class="fas fa-music"></span>&nbsp;Chart
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Melon</a>
+          <a class="dropdown-item" href="melon.jsp">Melon</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Genie</a>
+          <a class="dropdown-item" href="genie.jsp">Genie</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Bugs</a>
+          <a class="dropdown-item" href="bugs.jsp">Bugs</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">YouTube</a>
+          <a class="dropdown-item" href="youtube.jsp">YouTube</a>
         </div>
       </li> 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#" class="btn btn-outline-primary"><span class="fas fa-user"></span> Sign Up</a></li>
+      <li><a href="join.jsp" class="btn btn-outline-primary"><span class="fas fa-user"></span> Sign Up</a></li>
       <li>&nbsp;&nbsp;&nbsp;</li>
-      <li><a href="#" class="btn btn-outline-primary"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+      <li><a href="login.jsp" class="btn btn-outline-primary"><span class="fas fa-sign-in-alt"></span> Login</a></li>
     </ul>
   </div>
 </nav>
