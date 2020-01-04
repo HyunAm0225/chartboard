@@ -1,0 +1,24 @@
+package bbs;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class BbsDAO {
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	
+	public BbsDAO() {
+		try {
+			String dbURL = "jdbc:mysql://userdb.cpeg4xklh37z.ap-northeast-2.rds.amazonaws.com:3306/deploy?useSSL=false&serverTimezone=Asia/Seoul"; 
+			String dbID = "hyunam";
+			String dbPassword = "dktlqkf12";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
