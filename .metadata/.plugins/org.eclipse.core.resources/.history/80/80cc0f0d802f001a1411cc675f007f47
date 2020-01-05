@@ -1,0 +1,131 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="bbs.Bbs" %>
+<%@ page import="bbs.BbsDAO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width" initial-scale="1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<title>게시판 페이지</title>
+<style>
+	body{
+		background-image: url("images/background-chart.jpg");
+	}
+	
+</style>
+</head>
+<body>
+	<%
+		String userID = null;
+		if(session.getAttribute("userID")!=null){
+			userID = (String) session.getAttribute("userID");
+		}
+		int bbsID = 0;
+		if(request.getParameter("bbsID")!=null){
+			bbsID = Integer.parseInt(request.getParameter("bbsID"));
+		}
+		if(bbsID==0){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('유효하지 않는 글입니다.')");
+			script.println("location.href='bbs.jsp'");
+			script.println("</script>");
+		}
+		Bbs bbs = new BbsDAO().getBbs(bbsID);
+	%>
+<!-- navbar 시작 -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="main.jsp">차트분석기</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="bbs.jsp">게시판 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         	<span class="fas fa-music"></span>&nbsp;Chart
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="melon.jsp">Melon</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="genie.jsp">Genie</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="bugs.jsp">Bugs</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="youtube.jsp">YouTube</a>
+        </div>
+      </li> 
+    </ul>
+    <%
+    	if(userID==null){
+    %>  
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="join.jsp" class="btn btn-outline-primary"><span class="fas fa-user"></span> Sign Up</a></li>
+      <li>&nbsp;&nbsp;&nbsp;</li>
+      <li><a href="login.jsp" class="btn btn-outline-primary"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+    </ul>  	
+    <% 
+    	}else{
+    %>
+	<ul class="nav navbar-nav navbar-right">
+      <li><a href="join.jsp" class="btn btn-outline-primary disabled"><span class="fas fa-user"></span> Sign Up</a></li>
+      <li>&nbsp;&nbsp;&nbsp;</li>
+      <li><a href="logoutAction.jsp" class="btn btn-outline-primary"><span class="fas fa-sign-in-alt"></span> Logout</a></li>
+    </ul>	    
+    <% } %>
+
+  </div>
+</nav>
+<!-- navbar 끝 -->
+	<div class="container">
+		<div class="row">
+				<table class="table table-dark  table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="3" style="text-align:center">게시판 글보기</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="width:20%;">글 제목</td>
+							<td colspan="2"><%= bbs.getBbsTitle() %></td>
+						</tr>
+						<tr>
+							<td>작성자</td>
+							<td colspan="2"><%= bbs.getUserID() %></td>
+						</tr>
+						<tr>
+							<td>작성일자</td>
+							<td colspan="2"><%= bbs.getBbsDate().substring(0,10) + " "+ bbs.getBbsDate().substring(11,13)+"시 "+bbs.getBbsDate().substring(14,16) +"분" %></td>
+						</tr>
+						<tr>
+							<td>내용</td>
+							<td colspan="2" style="min-height:200px; text-align:left;"><%= bbs.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll(">", "&gt;").replaceAll("<", "&lt;") %></td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="bbs.jsp" class="btn btn-primary">목록</a>
+				<%
+					if(userID != null && userID.equals(bbs.getUserID())){
+				%>
+				<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn-warning">수정</a>
+				<a href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-danger">삭제</a>
+				<%
+					}
+				%>
+		</div>
+	</div>
+	
+</body>
+</html>
